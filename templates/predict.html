@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Admission Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>University Admission Prediction</h1>
+        <p>Enter your details and get the probability of your admission</p>
+
+        <form action="/predict" method="POST">
+            <!-- CSRF Token (if using Flask-WTF) -->
+            {% if csrf_token %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            {% endif %}
+
+            <label for="gre_score">Enter GRE score</label>
+            <input type="number" id="gre_score" name="gre_score" min="260" max="340" required>
+
+            <label for="toefl_score">Enter TOEFL score</label>
+            <input type="number" id="toefl_score" name="toefl_score" min="0" max="120" required>
+
+            <label>Select University Rating</label>
+            <div class="radio-group">
+                <label><input type="radio" name="university_rating" value="1" required> 1</label>
+                <label><input type="radio" name="university_rating" value="2"> 2</label>
+                <label><input type="radio" name="university_rating" value="3"> 3</label>
+                <label><input type="radio" name="university_rating" value="4"> 4</label>
+                <label><input type="radio" name="university_rating" value="5"> 5</label>
+            </div>
+
+            <label for="sop">Enter SOP (Statement of Purpose)</label>
+            <input type="number" id="sop" step="0.1" name="sop" min="1.0" max="5.0" required>
+
+            <label for="lor">Enter LOR (Letter of Recommendation)</label>
+            <input type="number" id="lor" step="0.1" name="lor" min="1.0" max="5.0" required>
+
+            <label for="cgpa">Enter CGPA</label>
+            <input type="number" id="cgpa" step="0.1" name="cgpa" min="0.0" max="10.00" required>
+
+            <label>Research</label>
+            <div class="radio-group">
+                <label><input type="radio" name="research" value="1" required> Yes</label>
+                <label><input type="radio" name="research" value="0"> No</label>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+body {
+        
+    background-image: url("http://127.0.0.1:5000/static/images/home.png"); /* Absolute path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+
+        }
+        .container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute; /* Ensures it's positioned correctly */
+    top: 10%; /* Moves it to the center */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect center alignment */
+    text-align: center;
+}
+
+.title {
+    
+font-family: "Times New Roman", serif;
+font-size: 34px; /* Adjust as needed */
+font-weight: bold;
+color: black;
+   
+ background-color: #FFD700;  
+display: inline-block;
+padding: 10px 20px;
+border-radius: 5px;
+}
+      
+button:hover{
+background-color:blue;
+}buttton{
+padding:10px 20px;
+}  

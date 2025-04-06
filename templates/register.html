@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css')}}">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm_password").value;
+            let email = document.getElementById("email").value;
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let errorMessage = "";
+
+            if (!emailPattern.test(email)) {
+                errorMessage = "Enter a valid email.";
+            } else if (password !== confirmPassword) {
+                errorMessage = "Passwords do not match.";
+            }
+
+            if (errorMessage) {
+                document.getElementById("error-message").innerText = errorMessage;
+                event.preventDefault(); // Prevent form submission
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="wrapper">
+    <form action="{{ url_for('register') }}" method="POST" onsubmit="validateForm(event)">
+        <h2>Registration</h2>
+
+        <div class="input-field">
+            <input type="text" name="username" required>
+            <label>Username</label>
+        </div>
+
+        <div class="input-field">
+            <input type="email" name="email" id="email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="input-field">
+            <input type="password" name="password" id="password" required>
+            <label>Password</label>
+        </div>
+
+        <div class="input-field">
+            <input type="password" name="confirm_password" id="confirm_password" required>
+            <label>Confirm Password</label>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p class="register">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </form>
+</div>
+
+</body>
+</html>
+
